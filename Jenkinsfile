@@ -5,6 +5,9 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment {
+        NPM_CONFIG_LOGLEVEL = 'error'
+    }
     stages {
         stage('Build') {
             steps {
