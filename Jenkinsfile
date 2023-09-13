@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm ci --unsafe-perm'
+                sh 'npm ci'
             }
         }
         stage('Test') {
