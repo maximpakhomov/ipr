@@ -7,6 +7,8 @@ pipeline {
     }
     environment {
         NPM_CONFIG_LOGLEVEL = 'error'
+        'npm_config_cache' = 'npm-cache'
+        HOME = '.'
     }
     stages {
         stage('Build') {
