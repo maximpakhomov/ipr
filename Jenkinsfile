@@ -7,13 +7,23 @@ pipeline {
     }
     environment {
         NPM_CONFIG_LOGLEVEL = 'error'
+        NODEJS_INSTALL     = 'NodeJS 18.x'
     }
     stages {
-        stage('Build') {
+        stage('install ui packages') {
             steps {
+                nodejs(nodeJSInstallationName: "${NODEJS_INSTALL}") {
+                sh 'node --version'
+                sh 'npm --version'
                 sh 'npm ci'
+                }
             }
         }
+        // stage('Build') {
+        //     steps {
+        //         sh 'npm ci'
+        //     }
+        // }
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
